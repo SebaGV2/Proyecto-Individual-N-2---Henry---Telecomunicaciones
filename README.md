@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Análisis de Telecomunicaciones en Argentina
 
 ## Introducción
@@ -57,6 +56,4 @@ El análisis fue realizado en **Python**, utilizando las siguientes librerías:
 - `seaborn`: Visualización avanzada.
 
 
-=======
-# Proyecto-Individual-N-2---Henry---Telecomunicaciones
->>>>>>> 6d36d5ecd0abff2fdf1585439aa51a4172183ec9
+
