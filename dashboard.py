@@ -6,62 +6,110 @@ import matplotlib.pyplot as plt
 st.title("Análisis de Telecomunicaciones en Argentina")
 st.markdown("Este dashboard interactivo analiza KPIs clave sobre el acceso a internet en Argentina.")
 
-# Cargar datos
+# -------------------------------------------
+# Función para cargar datos
+# -------------------------------------------
 @st.cache_data
 def cargar_datos():
+    # Cargar el archivo Excel y las hojas necesarias
     internet_data = pd.ExcelFile('Internet.xlsx')
-    df_tecnologia = internet_data.parse('Accesos Por Tecnología')
-    df_poblacion = internet_data.parse('Penetración-poblacion')
-    df_rangos = internet_data.parse('Accesos por rangos')
-    df_penetracion_hogares = internet_data.parse('Penetracion-hogares')
-    return df_tecnologia, df_poblacion, df_rangos, df_penetracion_hogares
+    df_tecnologia = internet_data.parse('Accesos Por Tecnología')  # Datos sobre accesos por tecnología
+    df_rangos = internet_data.parse('Accesos por rangos')  # Datos sobre rangos de velocidad
+    df_penetracion_hogares = internet_data.parse('Penetracion-hogares')  # Datos sobre penetración por hogares
+    return df_tecnologia, df_rangos, df_penetracion_hogares
 
-df_tecnologia, df_poblacion, df_rangos, df_penetracion_hogares = cargar_datos()
+# Cargar los datos
+df_tecnologia, df_rangos, df_penetracion_hogares = cargar_datos()
 
-# Panel 1: KPIs Globales
-st.header("KPIs Globales")
-st.subheader("Crecimiento de accesos por tecnología")
-df_tecnologia['Total Tecnología'] = (df_tecnologia['ADSL'] + df_tecnologia['Cablemodem'] + 
-                                     df_tecnologia['Fibra óptica'] + df_tecnologia['Wireless'] + 
-                                     df_tecnologia['Otros'])
+# -------------------------------------------
+# Layout de gráficos en la parte superior
+# -------------------------------------------
+# Dividimos la pantalla en tres columnas para mostrar los gráficos en la misma línea
+col1, col2, col3 = st.columns(3)
 
-# Calcular porcentajes
-for col in ['ADSL', 'Cablemodem', 'Fibra óptica', 'Wireless', 'Otros']:
-    df_tecnologia[f'Pct_{col}'] = (df_tecnologia[col] / df_tecnologia['Total Tecnología']) * 100
+with col1:
+    # Panel 1: KPIs Globales
+    st.subheader("Crecimiento de accesos por tecnología")
+    tecnologias = ['ADSL', 'Cablemodem', 'Fibra óptica', 'Wireless', 'Otros']
+    df_tecnologia['Total Tecnología'] = df_tecnologia[tecnologias].sum(axis=1)
+    for col in tecnologias:
+        df_tecnologia[f'Pct_{col}'] = (df_tecnologia[col] / df_tecnologia['Total Tecnología']) * 100
 
-# Gráfico
-fig, ax = plt.subplots(figsize=(10, 6))
-df_tecnologia.groupby('Provincia')[['Pct_ADSL', 'Pct_Cablemodem', 'Pct_Fibra óptica']].mean().plot(kind='bar', stacked=True, ax=ax)
-plt.title('Distribución porcentual de accesos por tecnología')
-st.pyplot(fig)
+    # Crear gráfico de barras apiladas
+    fig, ax = plt.subplots(figsize=(5, 5))
+    df_tecnologia.groupby('Provincia')[[f'Pct_{col}' for col in tecnologias]].mean().plot(kind='bar', stacked=True, ax=ax)
+    plt.title('Accesos por Tecnología')
+    st.pyplot(fig)
 
-# Panel 2: Rangos de Velocidad
-st.header("Análisis de Rangos de Velocidad")
-st.subheader("Distribución de accesos por rangos de velocidad")
-rango_cols = ['HASTA 512 kbps', '+ 512 Kbps - 1 Mbps', '+ 1 Mbps - 6 Mbps', 
-              '+ 6 Mbps - 10 Mbps', '+ 10 Mbps - 20 Mbps', '+ 20 Mbps - 30 Mbps', '+ 30 Mbps']
-df_rangos_grouped = df_rangos.groupby('Provincia')[rango_cols].sum()
+with col2:
+    # Panel 2: Rangos de Velocidad
+    st.subheader("Distribución de rangos de velocidad")
+    rango_cols = ['HASTA 512 kbps', '+ 512 Kbps - 1 Mbps', '+ 1 Mbps - 6 Mbps', 
+                  '+ 6 Mbps - 10 Mbps', '+ 10 Mbps - 20 Mbps', '+ 20 Mbps - 30 Mbps', '+ 30 Mbps']
+    df_rangos_grouped = df_rangos.groupby('Provincia')[rango_cols].sum()
 
-fig, ax = plt.subplots(figsize=(10, 6))
-df_rangos_grouped.plot(kind='bar', stacked=True, ax=ax, colormap='plasma')
-plt.title('Distribución de accesos por rango de velocidad')
-st.pyplot(fig)
+    # Crear gráfico de barras apiladas
+    fig, ax = plt.subplots(figsize=(5, 5))
+    df_rangos_grouped.plot(kind='bar', stacked=True, ax=ax, colormap='plasma')
+    plt.title('Accesos por Velocidad')
+    st.pyplot(fig)
 
-# Panel 3: Tendencias Temporales
-st.header("Tendencias Temporales")
-st.subheader("Evolución de accesos por cada 100 hogares")
-fig, ax = plt.subplots(figsize=(10, 6))
-df_penetracion_hogares.groupby('Año')['Accesos por cada 100 hogares'].mean().plot(kind='line', marker='o', ax=ax)
-plt.title('Tendencia de accesos por cada 100 hogares')
-plt.xlabel('Año')
-plt.ylabel('Accesos por cada 100 hogares')
-plt.grid(True)
-st.pyplot(fig)
+with col3:
+    # Panel 3: Tendencias Temporales
+    st.subheader("Evolución de accesos por cada 100 hogares")
+    fig, ax = plt.subplots(figsize=(5, 5))
+    df_penetracion_hogares.groupby('Año')['Accesos por cada 100 hogares'].mean().plot(kind='line', marker='o', ax=ax)
+    plt.title('Tendencia Temporal')
+    plt.xlabel('Año')
+    plt.ylabel('Accesos por cada 100 hogares')
+    plt.grid(True)
+    st.pyplot(fig)
 
-st.markdown("### Conclusiones")
-st.markdown("""
-1. Hay una brecha significativa en la conectividad entre provincias.
-2. Las provincias con mayor penetración de fibra óptica lideran en infraestructura tecnológica.
-3. El acceso ha crecido constantemente desde 2014, con un aumento significativo en 2020.
-""")
+# -------------------------------------------
+# Filtros en fila horizontal debajo de los gráficos
+# -------------------------------------------
+st.markdown("### Filtros")
+
+# Crear una fila con filtros en columnas
+col_f1, col_f2, col_f3, col_f4 = st.columns(4)  # Cuatro columnas para los filtros
+
+with col_f1:
+    # Filtro de provincias
+    provincias = sorted(df_tecnologia['Provincia'].dropna().unique())  # Eliminar NaN y ordenar
+    provincias_seleccionadas = st.multiselect("Seleccione las provincias", provincias, default=provincias)
+
+    # Botón para seleccionar todas las provincias
+    if st.button("Seleccionar todas las provincias"):
+        provincias_seleccionadas = provincias  # Selecciona todas las provincias disponibles
+
+with col_f2:
+    # Filtro por trimestre
+    df_tecnologia['Trimestre'] = pd.to_numeric(df_tecnologia['Trimestre'], errors='coerce')
+    trimestres = sorted(df_tecnologia['Trimestre'].dropna().unique().astype(int))
+    trimestres_seleccionados = st.multiselect("Seleccione los trimestres", trimestres, default=trimestres)
+
+with col_f3:
+    # Filtro por tecnología
+    tecnologias_seleccionadas = st.multiselect("Seleccione las tecnologías", tecnologias, default=tecnologias)
+
+with col_f4:
+    # Filtro por rangos de velocidad
+    rangos_seleccionados = st.multiselect("Seleccione los rangos de velocidad", rango_cols, default=rango_cols)
+
+# Aplicar filtros a los datos
+df_tecnologia_filtrado = df_tecnologia[
+    (df_tecnologia['Provincia'].isin(provincias_seleccionadas)) &
+    (df_tecnologia['Trimestre'].isin(trimestres_seleccionados))
+]
+
+df_rangos_filtrado = df_rangos[
+    (df_rangos['Provincia'].isin(provincias_seleccionadas)) &
+    (df_rangos['Trimestre'].isin(trimestres_seleccionados))
+]
+
+df_penetracion_hogares_filtrado = df_penetracion_hogares[
+    (df_penetracion_hogares['Provincia'].isin(provincias_seleccionadas)) &
+    (df_penetracion_hogares['Trimestre'].isin(trimestres_seleccionados))
+]
+
 

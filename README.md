@@ -1,77 +1,85 @@
-# Análisis de Telecomunicaciones en Argentina
+# Análisis de Telecomunicaciones en Argentina 📊
 
-## Introducción
-Este proyecto presenta un dashboard interactivo desarrollado en **Streamlit** para analizar el estado actual de las telecomunicaciones en Argentina. Los indicadores clave analizados incluyen:
+Este proyecto presenta un análisis interactivo sobre el acceso a internet en Argentina, utilizando un dashboard desarrollado con **Streamlit**. El objetivo principal es explorar indicadores clave de conectividad, evaluar brechas digitales y proponer soluciones basadas en datos.
 
-- Crecimiento de accesos por tecnología.
-- Relación entre accesos y población.
-- Distribución de accesos por rangos de velocidad.
-- Tendencias temporales en la conectividad.
+## **Contenido del Proyecto**
 
-El objetivo es identificar oportunidades de mejora en infraestructura, cerrar brechas digitales entre provincias y guiar decisiones de inversión en el sector.
-
-
-
-## Archivos del Proyecto
-El repositorio contiene los siguientes archivos:
-
-### Código
-- `dashboard.py`: Archivo principal que ejecuta el dashboard interactivo.
-- `eda_telecomunicaciones.py`: Script que realiza el análisis, genera gráficos y exporta los resultados.
-
-### Resultados Exportados
-- `KPI_Accesos_Tecnologia.csv`: Porcentaje de accesos por tecnología en cada provincia.
-- `KPI_Accesos_Poblacion.csv`: Promedio de accesos por cada 100 habitantes en cada provincia.
-- `Distribucion_Rangos.csv`: Distribución de accesos por rangos de velocidad en cada provincia.
-- `Tendencia_Accesos_Por_Año.csv`: Evolución de accesos por cada 100 hogares a lo largo de los años.
-
-### Datos Originales
-- `Internet.xlsx`: Dataset principal con la información analizada.
-
-## Metodología
-
-El dashboard se organiza en **tres paneles principales**, cada uno enfocado en un aspecto clave del análisis:
-
-### Panel 1: KPIs Globales
-- **Crecimiento de accesos por tecnología:**
-  - Analiza la distribución de accesos entre tecnologías como ADSL, Cablemodem y Fibra Óptica.
-  - **Gráfico:** Barras apiladas.
-  - **Conclusión:** Provincias con mayor penetración de fibra óptica, como Capital Federal, presentan mejor infraestructura.
-
-- **Relación entre accesos y población:**
-  - Mide el promedio de accesos por cada 100 habitantes en cada provincia.
-  - **Gráfico:** Barras simples.
-  - **Conclusión:** Hay disparidades significativas entre provincias como Capital Federal y Chaco.
+1. [Objetivo del Análisis](#objetivo-del-análisis)
+2. [Descripción del Dashboard](#descripción-del-dashboard)
+3. [KPIs Analizados](#kpis-analizados)
+4. [Filtros Interactivos](#filtros-interactivos)
+5. [Requisitos para Ejecutar el Dashboard](#requisitos-para-ejecutar-el-dashboard)
+6. [Instrucciones de Ejecución](#instrucciones-de-ejecución)
+7. [Conclusiones](#conclusiones)
 
 ---
 
-### Panel 2: Rangos de Velocidad
-- Analiza la distribución de accesos según rangos de velocidad (por ejemplo, menos de 512 kbps, entre 10 y 20 Mbps, más de 30 Mbps).
-- **Gráfico:** Barras apiladas por provincia.
-- **Conclusión:** Provincias con mayor cantidad de accesos en rangos altos reflejan mejor infraestructura tecnológica.
+## **Objetivo del Análisis**
+
+El acceso a internet es un factor crucial en el desarrollo económico, educativo y social. Este análisis tiene como propósito:
+- Identificar las brechas en conectividad entre provincias.
+- Evaluar la calidad y cantidad de accesos a internet en función de la tecnología y velocidad.
+- Proponer soluciones para mejorar la infraestructura digital en regiones rezagadas.
 
 ---
 
-### Panel 3: Tendencias Temporales
-- Estudia la evolución de accesos por cada 100 hogares a lo largo del tiempo.
-- **Gráfico:** Línea que muestra el crecimiento desde 2014 hasta 2024.
-- **Conclusión:** El acceso ha crecido de forma constante, con un pico significativo en 2020 debido a la pandemia.
+## **Descripción del Dashboard**
+
+El dashboard interactivo está dividido en **tres paneles principales** y **cuatro filtros** que permiten personalizar la visualización de los datos.
+
+### **Paneles Principales:**
+1. **Crecimiento de Accesos por Tecnología:**
+   - Visualización: Gráfico de barras apiladas.
+   - Muestra la distribución de accesos por tecnología (ADSL, Cablemodem, Fibra Óptica, Wireless, Otros).
+   
+2. **Distribución de Rangos de Velocidad:**
+   - Visualización: Gráfico de barras apiladas.
+   - Representa cómo se distribuyen los accesos en diferentes rangos de velocidad (desde menos de 512 kbps hasta más de 30 Mbps).
+
+3. **Tendencias Temporales:**
+   - Visualización: Gráfico de líneas.
+   - Muestra la evolución de los accesos por cada 100 hogares desde 2014 hasta 2024.
 
 ---
 
-#### **Conclusiones**
-1. **Brechas regionales:** Provincias como Capital Federal lideran en conectividad, mientras que Chaco y Formosa están rezagadas.
-2. **Importancia de la fibra óptica:** Esta tecnología es clave para mejorar la infraestructura tecnológica.
-3. **Crecimiento sostenido:** Desde 2014, el acceso ha crecido consistentemente, con un aumento notable en 2020.
+## **KPIs Analizados**
+
+1. **Distribución de Accesos por Tecnología:**
+   - Proporción de accesos en tecnologías como ADSL, Fibra Óptica, etc., en cada provincia.
+   
+2. **Distribución de Accesos por Rangos de Velocidad:**
+   - Evaluación de la calidad de conexión en términos de velocidad.
+   
+3. **Tendencia de Crecimiento:**
+   - Evolución de los accesos por cada 100 hogares a lo largo del tiempo.
 
 ---
 
+## **Filtros Interactivos**
 
+El dashboard incluye **filtros dinámicos** que permiten ajustar la visualización según los intereses del usuario:
+1. **Provincias:** Selecciona una o varias provincias para el análisis.
+   - Incluye un botón para seleccionar todas las provincias.
+2. **Trimestres:** Filtra los datos por uno o varios trimestres.
+3. **Tecnologías:** Permite elegir tecnologías específicas (ADSL, Cablemodem, etc.).
+4. **Rangos de Velocidad:** Ajusta el análisis en función de los rangos de velocidad seleccionados.
 
-## Tecnologías Utilizadas
-Este proyecto fue desarrollado íntegramente en **Python**, utilizando las siguientes herramientas:
-- **Streamlit:** Framework para crear dashboards interactivos.
-- **Pandas:** Manipulación y análisis de datos.
-- **Matplotlib y Seaborn:** Visualización de datos.
+---
 
+## **Requisitos para Ejecutar el Dashboard**
 
+Antes de ejecutar el proyecto, asegúrate de tener instalados los siguientes elementos:
+- **Python 3.8 o superior.**
+- Librerías necesarias:
+  - `streamlit`
+  - `pandas`
+  - `matplotlib`
+
+Para instalar las dependencias, ejecuta:
+```bash
+pip install streamlit pandas matplotlib
+
+## **Conclusiones**
+Desigualdad Regional: Existen brechas significativas en la conectividad entre provincias. Buenos Aires lidera en infraestructura, mientras que regiones como Chaco están rezagadas.
+Impacto de la Tecnología: La fibra óptica está concentrada en regiones más desarrolladas, lo que limita la calidad del acceso en otras provincias.
+Crecimiento Constante: Desde 2014, el acceso ha crecido de manera sostenida, con un incremento notable en 2020 debido a la pandemia.
