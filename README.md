@@ -75,11 +75,6 @@ Antes de ejecutar el proyecto, asegúrate de tener instalados los siguientes ele
   - `pandas`
   - `matplotlib`
 
-Para instalar las dependencias, ejecuta:
-```bash
-pip install streamlit pandas matplotlib
 
-## **Conclusiones**
-Desigualdad Regional: Existen brechas significativas en la conectividad entre provincias. Buenos Aires lidera en infraestructura, mientras que regiones como Chaco están rezagadas.
-Impacto de la Tecnología: La fibra óptica está concentrada en regiones más desarrolladas, lo que limita la calidad del acceso en otras provincias.
-Crecimiento Constante: Desde 2014, el acceso ha crecido de manera sostenida, con un incremento notable en 2020 debido a la pandemia.
+
+
