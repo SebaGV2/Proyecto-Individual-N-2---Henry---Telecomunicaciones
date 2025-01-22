@@ -1,144 +1,86 @@
-Análisis de Telecomunicaciones en Argentina 📊
+# Análisis de Telecomunicaciones en Argentina 📊
 
-Este proyecto presenta un análisis interactivo sobre el acceso a internet en Argentina, utilizando un dashboard desarrollado con Streamlit. El objetivo principal es explorar indicadores clave de conectividad, evaluar brechas digitales y proponer soluciones basadas en datos.
+Este proyecto presenta un análisis interactivo sobre el acceso a internet en Argentina, utilizando un dashboard desarrollado con **Streamlit**. El objetivo principal es explorar indicadores clave de conectividad, evaluar brechas digitales y proponer soluciones basadas en datos.
 
-Contenido del Proyecto
+## **Contenido del Proyecto**
 
-Objetivo del Análisis
+1. [Objetivo del Análisis](#objetivo-del-análisis)
+2. [Descripción del Dashboard](#descripción-del-dashboard)
+3. [KPIs Analizados](#kpis-analizados)
+4. [Filtros Interactivos](#filtros-interactivos)
+5. [Requisitos para Ejecutar el Dashboard](#requisitos-para-ejecutar-el-dashboard)
+6. [Instrucciones de Ejecución](#instrucciones-de-ejecución)
+7. [Conclusiones](#conclusiones)
 
-Descripción del Dashboard
+---
 
-KPIs Analizados
-
-Filtros Interactivos
-
-Requisitos para Ejecutar el Dashboard
-
-Instrucciones de Ejecución
-
-Conclusiones
-
-Objetivo del Análisis
+## **Objetivo del Análisis**
 
 El acceso a internet es un factor crucial en el desarrollo económico, educativo y social. Este análisis tiene como propósito:
+- Identificar las brechas en conectividad entre provincias.
+- Evaluar la calidad y cantidad de accesos a internet en función de la tecnología y velocidad.
+- Proponer soluciones para mejorar la infraestructura digital en regiones rezagadas.
 
-Identificar las brechas en conectividad entre provincias.
+---
 
-Evaluar la calidad y cantidad de accesos a internet en función de la tecnología y velocidad.
+## **Descripción del Dashboard**
 
-Proponer soluciones para mejorar la infraestructura digital en regiones rezagadas.
+El dashboard interactivo está dividido en **tres paneles principales** y **cuatro filtros** que permiten personalizar la visualización de los datos.
 
-Descripción del Dashboard
+### **Paneles Principales:**
+1. **Crecimiento de Accesos por Tecnología:**
+   - Visualización: Gráfico de barras apiladas.
+   - Muestra la distribución de accesos por tecnología (ADSL, Cablemodem, Fibra Óptica, Wireless, Otros).
+   
+2. **Distribución de Rangos de Velocidad:**
+   - Visualización: Gráfico de barras apiladas.
+   - Representa cómo se distribuyen los accesos en diferentes rangos de velocidad (desde menos de 512 kbps hasta más de 30 Mbps).
 
-El dashboard interactivo está dividido en tres paneles principales y cuatro filtros que permiten personalizar la visualización de los datos.
+3. **Tendencias Temporales:**
+   - Visualización: Gráfico de líneas.
+   - Muestra la evolución de los accesos por cada 100 hogares desde 2014 hasta 2024.
 
-Paneles Principales:
+4. **Conexiones por Tecnología:**
+   - Visualización: Gráfico de torta.
+   - Representa la proporción de conexiones por tecnología en el total nacional.
 
-Crecimiento de Accesos por Tecnología:
+---
 
-Visualización: Gráfico de barras apiladas.
+## **KPIs Analizados**
 
-Muestra la distribución de accesos por tecnología (ADSL, Cablemodem, Fibra Óptica, Wireless, Otros).
+1. **Distribución de Accesos por Tecnología:**
+   - Proporción de accesos en tecnologías como ADSL, Fibra Óptica, etc., en cada provincia.
+   
+2. **Distribución de Accesos por Rangos de Velocidad:**
+   - Evaluación de la calidad de conexión en términos de velocidad.
+   
+3. **Tendencia de Crecimiento:**
+   - Evolución de los accesos por cada 100 hogares a lo largo del tiempo.
 
-Distribución de Rangos de Velocidad:
+4. **KPI del 2%:**
+   - Evalúa si el crecimiento en los accesos por cada 100 hogares trimestre a trimestre cumple con el objetivo de al menos un 2%.
 
-Visualización: Gráfico de barras apiladas.
+---
 
-Representa cómo se distribuyen los accesos en diferentes rangos de velocidad (desde menos de 512 kbps hasta más de 30 Mbps).
+## **Filtros Interactivos**
 
-Tendencias Temporales:
+El dashboard incluye **filtros dinámicos** que permiten ajustar la visualización según los intereses del usuario:
+1. **Provincias:** Selecciona una o varias provincias para el análisis.
+   - Incluye un botón para seleccionar todas las provincias.
+2. **Trimestres:** Filtra los datos por uno o varios trimestres.
+3. **Tecnologías:** Permite elegir tecnologías específicas (ADSL, Cablemodem, etc.).
+4. **Rangos de Velocidad:** Ajusta el análisis en función de los rangos de velocidad seleccionados.
 
-Visualización: Gráfico de líneas.
+---
 
-Muestra la evolución de los accesos por cada 100 hogares desde 2014 hasta 2024.
-
-Conexiones por Tecnología:
-
-Visualización: Gráfico de torta.
-
-Representa la proporción de conexiones por tecnología en el total nacional.
-
-KPIs Analizados
-
-Distribución de Accesos por Tecnología:
-
-Proporción de accesos en tecnologías como ADSL, Fibra Óptica, etc., en cada provincia.
-
-Distribución de Accesos por Rangos de Velocidad:
-
-Evaluación de la calidad de conexión en términos de velocidad.
-
-Tendencia de Crecimiento:
-
-Evolución de los accesos por cada 100 hogares a lo largo del tiempo.
-
-KPI del 2%:
-
-Evalúa si el crecimiento en los accesos por cada 100 hogares trimestre a trimestre cumple con el objetivo de al menos un 2%.
-
-Filtros Interactivos
-
-El dashboard incluye filtros dinámicos que permiten ajustar la visualización según los intereses del usuario:
-
-Provincias: Selecciona una o varias provincias para el análisis.
-
-Incluye un botón para seleccionar todas las provincias.
-
-Trimestres: Filtra los datos por uno o varios trimestres.
-
-Tecnologías: Permite elegir tecnologías específicas (ADSL, Cablemodem, etc.).
-
-Rangos de Velocidad: Ajusta el análisis en función de los rangos de velocidad seleccionados.
-
-Requisitos para Ejecutar el Dashboard
+## **Requisitos para Ejecutar el Dashboard**
 
 Antes de ejecutar el proyecto, asegúrate de tener instalados los siguientes elementos:
+- **Python 3.9 o superior.**
+- Librerías necesarias:
+  - `streamlit`
+  - `pandas`
+  - `matplotlib`
 
-Python 3.9 o superior.
-
-Librerías necesarias:
-
-streamlit
-
-pandas
-
-matplotlib
-
-Instrucciones de Ejecución
-
-Clona este repositorio en tu máquina local:
-
-git clone <URL_DEL_REPOSITORIO>
-
-Navega a la carpeta del proyecto:
-
-cd <CARPETA_DEL_PROYECTO>
-
-Instala las dependencias necesarias:
-
-pip install -r requirements.txt
-
-Ejecuta el dashboard:
-
-streamlit run dashboard.py
-
-Abre el enlace generado por Streamlit en tu navegador para interactuar con el dashboard.
-
-Conclusiones
-
-KPI del 2%:
-
-Permite evaluar si las provincias seleccionadas cumplen con el objetivo de crecimiento trimestre a trimestre.
-
-Brechas Tecnológicas:
-
-Provincias con mayor uso de fibra óptica suelen estar más avanzadas tecnológicamente.
-
-Las provincias con predominancia de ADSL y Wireless presentan retos en infraestructura.
-
-Tendencias:
-
-Crecimiento sostenido de accesos a internet en los últimos años, con aceleración en períodos críticos como la pandemia.
-
-¡Gracias por explorar este análisis interactivo sobre las telecomunicaciones en Argentina! 🚀
+---
 
